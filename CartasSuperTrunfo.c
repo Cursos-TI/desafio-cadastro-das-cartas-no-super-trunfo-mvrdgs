@@ -23,6 +23,8 @@ int main() {
     printf("Digite o Código da Carta: ");
     scanf("%s", &cardID);
 
+    getchar();
+
     printf("Digite o Nome da Cidade: ");
     fgets(city, sizeof(city), stdin);
     city[strcspn(city, "\n")] = '\0'; 
