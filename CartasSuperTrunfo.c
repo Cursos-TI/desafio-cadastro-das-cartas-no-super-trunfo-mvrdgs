@@ -13,17 +13,14 @@ typedef struct {
 Card createCard() {
     Card card;
 
-printf("Digite a letra do Estado: ");
+    printf("Digite a letra do Estado: ");
     scanf("%c", &card.state);
 
     printf("Digite o Código da Carta: ");
     scanf("%s", &card.cardID);
 
-    getchar();
-
     printf("Digite o Nome da Cidade: ");
-    fgets(card.city, sizeof(card.city), stdin);
-    card.city[strcspn(card.city, "\n")] = '\0'; 
+    scanf("%s", &card.city);
 
     printf("Digite a Área: ");
     scanf("%f", &card.area);
@@ -40,9 +37,7 @@ printf("Digite a letra do Estado: ");
     return card;
 };
 
-int main() {
-    Card card = createCard();
-
+void printCard(Card card) {
     printf("\nEstado: %c\n", card.state);
     printf("Código da Carta: %s\n", card.cardID);
     printf("Nome da Cidade: %s\n", card.city);
@@ -50,6 +45,13 @@ int main() {
     printf("Área: %.2f km²\n", card.area);
     printf("PIB: %.2f bilhões de reais\n", card.pib);
     printf("Número de Pontos Turísticos: %d\n", card.touristAttractionNumber);
+    printf("Densidade populacional: %f\n", card.population / card.area);
+    printf("PIB per Capita: %f\n", card.pib / card.population);
+}
 
+int main() {
+    Card card = createCard();
+    printCard(card);
+    
     return 0;
 }
